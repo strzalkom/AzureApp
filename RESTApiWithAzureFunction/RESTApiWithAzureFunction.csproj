@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Microsoft.Azure.WebJobs.Extensions.Storage" />
+    <None Remove="Models\" />
+    <None Remove="Microsoft.AspNetCore.Mvc" />
+    <None Remove="Microsoft.Azure.WebJobs.Extensions.Http" />
+    <None Remove="Microsoft.AspNetCore.Http" />
+    <None Remove="System.Data.SqlClient" />
+    <None Remove="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" />
+    <None Remove="Microsoft.Azure.WebJobs" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Microsoft.Azure.WebJobs.Extensions.Storage.Queues" />
+    <None Remove="System.Runtime" />
+    <None Remove="Microsoft.Extensions.Http" />
+    <None Remove="Microsoft.AspNetCore" />
+    <None Remove="Microsoft.NET.Sdk.Functions" />
+    <None Remove="Microsoft.AspNet.Mvc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.0.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.12" />
+  </ItemGroup>
+</Project>
