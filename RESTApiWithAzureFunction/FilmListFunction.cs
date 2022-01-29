@@ -27,10 +27,10 @@ namespace RESTApiWithAzureFunction
                 using (SqlConnection connection = new SqlConnection(Environment.GetEnvironmentVariable("SqlConnectionString")))
                 {
                     connection.Open();
-                    if (!String.IsNullOrEmpty(input.Description))
+                    if (!String.IsNullOrEmpty(input.Overview))
                     {
                         //var query = $"INSERT INTO FilmList (Description) VALUES('{input.Description}')";
-                        var query = $"INSERT INTO [FilmList] (Title,Description,Rating,PhotoUrl) VALUES('{input.Title}' ,'{input.Description}', '{input.Rating}' '{input.PhotoUrl}')";
+                        var query = $"INSERT INTO [FilmList] (Title,Overview,Vote_average,Poster_path) VALUES('{input.Title}' ,'{input.Overview.Replace("'", @"\'")}', '{input.Vote_average}', '{input.Poster_path}')";
                         SqlCommand command = new SqlCommand(query, connection);
                         command.ExecuteNonQuery();
                     }
@@ -63,9 +63,9 @@ namespace RESTApiWithAzureFunction
                         {
                             Id = (int)reader["Id"],
                             Title = reader["Title"].ToString(),
-                            Description = reader["Description"].ToString(),
-                            Rating = (int)reader["Rating"],
-                            PhotoUrl = reader["PhotoUrl"].ToString()
+                            Overview = reader["Overview"].ToString(),
+                            Vote_average = reader["Vote_average"].ToString(),
+                            Poster_path = reader["Poster_path"].ToString()
                            
                         };
                         filmList.Add(film);
@@ -150,7 +150,7 @@ namespace RESTApiWithAzureFunction
                     connection.Open();
                     var query = @"Update FilmList Set Description = @Description Where Id = @Id";
                     SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Description", input.Description);
+                    command.Parameters.AddWithValue("@Description", input.Overview);
                     command.Parameters.AddWithValue("@Id", id);
                     command.ExecuteNonQuery();
                 }

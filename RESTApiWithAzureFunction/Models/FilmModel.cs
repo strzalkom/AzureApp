@@ -10,22 +10,22 @@ namespace RESTApiWithAzureFunction.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
-        public int Rating { get; set; }
+        public string Overview { get; set; }
+        public string Vote_average { get; set; }
 
-        public string PhotoUrl { get; set; }
+        public string Poster_path { get; set; }
     }
     public class CreateFilmModel
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
-        public double Rating { get; set; }
-        public string PhotoUrl { get; set; }
+        public string Overview { get; set; }
+        public string Vote_average { get; set; }
+        public string Poster_path { get; set; }
     }
     public class UpdateFilmModel
     {
-        public string Description { get; set; }
+        public string Overview { get; set; }
      
     }
 }
